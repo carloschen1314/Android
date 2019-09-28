@@ -2,22 +2,13 @@ package com.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.androidproject.R;
-
-import java.io.File;
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -42,7 +33,8 @@ public class LoginActivity extends AppCompatActivity {
 //                Log.d("login",editText_password.getText().toString());
                 String accountNumber = editText_accountNumber.getText().toString();
                 String password = editText_accountNumber.getText().toString();
-                //后应补写跳转代码
+                Intent intent = new Intent(LoginActivity.this, LockActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -93,7 +85,8 @@ public class LoginActivity extends AppCompatActivity {
 //                Log.d("login",editText_password.getText().toString());
                 String accountNumber = editText_accountNumber.getText().toString();
                 String password = editText_accountNumber.getText().toString();
-                //后应补写跳转代码
+                Intent intent = new Intent(LoginActivity.this, LockActivity.class);
+                startActivity(intent);
             }
 
         }
