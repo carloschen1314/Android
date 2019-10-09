@@ -54,13 +54,13 @@ public class LockActivity extends AppCompatActivity {
 
                 if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                     //非系统应用
-                    Log.d("LoginActivity", packageName);
-                    Log.d("LoginActivity", versionName);
-                    Log.d("LoginActivity", String.valueOf(versionCode));
-                    Log.d("LoginActivity", appName);
+//                    Log.d("LoginActivity", packageName);
+//                    Log.d("LoginActivity", versionName);
+//                    Log.d("LoginActivity", String.valueOf(versionCode));
+//                    Log.d("LoginActivity", appName);
                 } else {
                     //系统应用
-                    Log.d("LoginActivity", appName);
+//                    Log.d("LoginActivity", appName);
                 }
             }
         }

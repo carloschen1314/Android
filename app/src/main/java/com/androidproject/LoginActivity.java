@@ -29,8 +29,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                需要传回后台验证的账号密码
-//                Log.d("login",editText_accountNumber.getText().toString());
-//                Log.d("login",editText_password.getText().toString());
                 String accountNumber = editText_accountNumber.getText().toString();
                 String password = editText_accountNumber.getText().toString();
                 Intent intent = new Intent(LoginActivity.this, LockActivity.class);
@@ -81,8 +79,6 @@ public class LoginActivity extends AppCompatActivity {
             if (str.indexOf("\r")>=0 || str.indexOf("\n")>=0){//发现输入回车符或换行符
                 editText_accountNumber.setText(str.replace("\r","").replace("\n",""));//去掉回车符和换行符
 //                需要传回后台验证的账号密码
-//                Log.d("login",editText_accountNumber.getText().toString());
-//                Log.d("login",editText_password.getText().toString());
                 String accountNumber = editText_accountNumber.getText().toString();
                 String password = editText_accountNumber.getText().toString();
                 Intent intent = new Intent(LoginActivity.this, LockActivity.class);
