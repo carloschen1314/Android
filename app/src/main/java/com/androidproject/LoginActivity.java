@@ -22,70 +22,39 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_layout);
         editText_accountNumber = (EditText) findViewById(R.id.account_number);
         editText_password = (EditText) findViewById(R.id.password);
-        login = (Button)findViewById(R.id.login);
-        editText_accountNumber.addTextChangedListener(new JumpTextWatcher());
-        editText_password.addTextChangedListener(new EditLogin());
+        login = (Button) findViewById(R.id.login);
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                需要传回后台验证的账号密码
+                /*需要传回后台验证的账号密码*/
                 String accountNumber = editText_accountNumber.getText().toString();
                 String password = editText_accountNumber.getText().toString();
                 Intent intent = new Intent(LoginActivity.this, LockActivity.class);
                 startActivity(intent);
             }
         });
-    }
 
-    private class JumpTextWatcher implements TextWatcher {
+        editText_accountNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            String str=s.toString();
-            if (str.indexOf("\r")>=0 || str.indexOf("\n")>=0){//发现输入回车符或换行符
-                editText_accountNumber.setText(str.replace("\r","").replace("\n",""));//去掉回车符和换行符
-                editText_password.requestFocus();//让editText2获取焦点
-                editText_password.setSelection(editText_password.getText().length());//若editText2有内容就将光标移动到文本末尾
             }
 
-        }
-    }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-    private class EditLogin implements TextWatcher {
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            String str=s.toString();
-            if (str.indexOf("\r")>=0 || str.indexOf("\n")>=0){//发现输入回车符或换行符
-                editText_accountNumber.setText(str.replace("\r","").replace("\n",""));//去掉回车符和换行符
-//                需要传回后台验证的账号密码
-                String accountNumber = editText_accountNumber.getText().toString();
-                String password = editText_accountNumber.getText().toString();
-                Intent intent = new Intent(LoginActivity.this, LockActivity.class);
-                startActivity(intent);
             }
 
-        }
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String str = editable.toString();
+                if (str.indexOf("\r") >= 0 || str.indexOf("\n") >= 0) {//发现输入回车符或换行符
+                    editText_accountNumber.setText(str.replace("\r", "").replace("\n", ""));//去掉回车符和换行符
+                    editText_password.requestFocus();//让editText2获取焦点
+                    editText_password.setSelection(editText_password.getText().length());//若editText2有内容就将光标移动到文本末尾
+                }
+            }
+        });
     }
-
 }

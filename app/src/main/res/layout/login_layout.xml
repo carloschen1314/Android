@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="30dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="30dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -16,20 +17,24 @@
         android:id="@+id/account_number"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="输入账号"
-        android:maxLines="1"/>
+        android:layout_marginTop="10dp"
+        android:hint="账号"
+        android:maxLines="1" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="输入密码"
-        android:maxLines="1"/>
+        android:layout_marginTop="10dp"
+        android:hint="密码"
+        android:inputType="textPassword"
+        android:maxLines="1" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:text="登陆"/>
+        android:layout_marginTop="10dp"
+        android:text="登陆" />
 </LinearLayout>
