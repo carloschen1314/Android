@@ -1,24 +1,66 @@
 package com.androidproject;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.List;
 
 public class LockActivity extends AppCompatActivity {
 
+    private DrawerLayout mdrawerLayout;
+    private Button runButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lock_activity);
+        runButton=findViewById(R.id.btn);
+
+        mdrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         this.getPackages();
 
+    }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.toolbar, menu);
+//        return true;
+//    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mdrawerLayout.openDrawer(GravityCompat.START);
+                break;
+//            case R.id.backup:
+//                Toast.makeText(this, "You Clicked Bakup", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.delete:
+//                Toast.makeText(this, "You Clicked Delete", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.settings:
+//                Toast.makeText(this, "You Clicked Settings", Toast.LENGTH_SHORT).show();
+//                break;
+            default:
+                break;
+        }
+        return true;
     }
 
     // 判断是否具有ROOT权限
