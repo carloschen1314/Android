@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Android Project</string>
+
+    <string name="nav_lock">锁定</string>
+    <string name="nav_talk">群组聊天</string>
+    <string name="nav_list">风云榜</string>
 </resources>
