@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/unlockAPP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:text="未锁定软件"
+        android:textSize="24dp"
+        android:textStyle="bold"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/unchose_item"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@+id/unlockAPP"
+        android:padding="20dp"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/determin"
+        android:layout_below="@+id/unchose_item"
+        android:text="确定"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"/>
+
+
+</RelativeLayout>

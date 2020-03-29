@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
                 /*需要传回后台验证的账号密码*/
                 String accountNumber = editText_accountNumber.getText().toString();
                 String password = editText_accountNumber.getText().toString();
-                Intent intent = new Intent(LoginActivity.this, LockActivity.class);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
