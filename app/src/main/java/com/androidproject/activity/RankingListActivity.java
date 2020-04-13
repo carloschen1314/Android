@@ -1,8 +1,10 @@
-package com.androidproject;
+package com.androidproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.androidproject.R;
 
 public class RankingListActivity extends AppCompatActivity {
 

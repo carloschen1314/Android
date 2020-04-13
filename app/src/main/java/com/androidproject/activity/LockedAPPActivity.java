@@ -1,4 +1,4 @@
-package com.androidproject;
+package com.androidproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -12,6 +12,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.androidproject.R;
+import com.androidproject.util.APP;
+import com.androidproject.util.APPAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

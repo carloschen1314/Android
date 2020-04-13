@@ -1,4 +1,4 @@
-package com.androidproject;
+package com.androidproject.util;
 
 import android.graphics.drawable.Drawable;
 

@@ -1,14 +1,16 @@
-package com.androidproject;
+package com.androidproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class TalkActivity extends AppCompatActivity {
+import com.androidproject.R;
+
+public class GroupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment2);
+        setContentView(R.layout.activity_group);
     }
 }

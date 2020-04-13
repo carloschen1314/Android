@@ -1,20 +1,18 @@
-package com.androidproject;
+package com.androidproject.activity;
 
-import android.content.pm.PackageInfo;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.androidproject.R;
+import com.androidproject.util.group;
+import com.androidproject.util.groupAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
