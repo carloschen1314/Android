@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                         mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_myGroup:
-                        Intent intent3 = new Intent(MainActivity.this, GroupActivity.class);
+                        Intent intent3 = new Intent(MainActivity.this, GroupChangingActivity.class);
                         startActivity(intent3);
                         mDrawerLayout.closeDrawers();
                         break;
