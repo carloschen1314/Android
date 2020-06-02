@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.androidproject.R;
 
@@ -17,14 +18,24 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editText_accountNumber;
     private EditText editText_password;
     private Button login;
+    private TextView txt_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        editText_accountNumber = (EditText) findViewById(R.id.account_number);
-        editText_password = (EditText) findViewById(R.id.password);
-        login = (Button) findViewById(R.id.login);
+        editText_accountNumber = (EditText) findViewById(R.id.edt_loginID);
+        editText_password = (EditText) findViewById(R.id.edt_loginPassword);
+        login = (Button) findViewById(R.id.btn_login);
+        txt_register=(TextView)findViewById(R.id.txt_register);
+
+        txt_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
