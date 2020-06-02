@@ -81,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.apply();
                 }
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("id",accountNumber);
                 startActivity(intent);
             }
         });

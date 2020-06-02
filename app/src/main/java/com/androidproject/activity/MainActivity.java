@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.androidproject.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+
+        Intent intent=getIntent();
+        TextView txt_userName=navView.getHeaderView(0).findViewById(R.id.userName);
+        txt_userName.setText(intent.getStringExtra("id"));
 
         //侧边栏点击事件
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
