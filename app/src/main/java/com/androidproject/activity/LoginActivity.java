@@ -3,12 +3,15 @@ package com.androidproject.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.androidproject.R;
@@ -18,7 +21,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editText_accountNumber;
     private EditText editText_password;
     private Button login;
+    private RadioButton radioButton;
     private TextView txt_register;
+    private boolean rdb_choose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +31,32 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         editText_accountNumber = (EditText) findViewById(R.id.edt_loginID);
         editText_password = (EditText) findViewById(R.id.edt_loginPassword);
-        login = (Button) findViewById(R.id.btn_login);
+        radioButton=(RadioButton)findViewById(R.id.rdb_rememeberPassword);
         txt_register=(TextView)findViewById(R.id.txt_register);
+        login = (Button) findViewById(R.id.btn_login);
+
+        //记住账号密码功能
+        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+        String id = pref.getString("id", "");
+        String password = pref.getString("password", "");
+        boolean remember = pref.getBoolean("remember", true);
+        editText_accountNumber.setText(id);
+        editText_password.setText(password);
+        radioButton.setChecked(remember);
+        rdb_choose=radioButton.isChecked();
+
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(rdb_choose){
+                    radioButton.setChecked(false);
+                    rdb_choose=false;
+                }else{
+                    radioButton.setChecked(true);
+                    rdb_choose=true;
+                }
+            }
+        });
 
         txt_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +72,14 @@ public class LoginActivity extends AppCompatActivity {
                 /*需要传回后台验证的账号密码*/
                 String accountNumber = editText_accountNumber.getText().toString();
                 String password = editText_accountNumber.getText().toString();
+
+                if (radioButton.isChecked()) {
+                    SharedPreferences.Editor editor = getSharedPreferences("login", MODE_PRIVATE).edit();
+                    editor.putString("id", String.valueOf(editText_accountNumber.getText()));
+                    editor.putString("password", String.valueOf(editText_password.getText()));
+                    editor.putBoolean("remember", radioButton.isChecked());
+                    editor.apply();
+                }
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
