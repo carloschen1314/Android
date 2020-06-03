@@ -5,7 +5,7 @@
     <version value="1" />
 
     <list>
-        <mapping class="com.androidproject.util.APP"></mapping>
+        <mapping class="com.androidproject.util.APP"/>
     </list>
 
 </litepal>

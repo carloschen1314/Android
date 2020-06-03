@@ -23,12 +23,16 @@ import java.util.List;
 public class LockedAPPActivity extends AppCompatActivity {
 
     private List<APP> appList = new ArrayList<>();
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locked_app);
         Button button=(Button)findViewById(R.id.chooseAPP);
+
+        Intent intent=getIntent();
+        id=intent.getStringExtra("id");
 
         initApps();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.chose_item);
@@ -41,6 +45,7 @@ public class LockedAPPActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(LockedAPPActivity.this,LockSetActivity.class);
+                intent.putExtra("id",id);
                 startActivity(intent);
             }
         });

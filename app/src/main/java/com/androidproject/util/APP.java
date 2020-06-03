@@ -2,16 +2,18 @@ package com.androidproject.util;
 
 import android.graphics.drawable.Drawable;
 
-public class APP {
+import org.litepal.crud.LitePalSupport;
+
+public class APP  extends LitePalSupport {
 
     private String name;
     private Drawable image;
     private String address;
     private String user;
 
-    public APP(String name, Drawable imageId, String address, String user) {
+    public APP(String name, Drawable image, String address, String user) {
         this.name = name;
-        this.image = imageId;
+        this.image = image;
         this.address = address;
         this.user = user;
     }

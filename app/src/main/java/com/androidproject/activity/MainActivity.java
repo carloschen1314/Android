@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private Fragment[] fragments;
     private int lastfragment;//用于记录上个选择的Fragment
 
+    private String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         TextView txt_userName=navView.getHeaderView(0).findViewById(R.id.userName);
-        txt_userName.setText(intent.getStringExtra("id"));
+        id=intent.getStringExtra("id");
+        txt_userName.setText(id);
 
         //侧边栏点击事件
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_lockApplication:
                         Intent intent2 = new Intent(MainActivity.this, LockedAPPActivity.class);
+                        intent2.putExtra("id",id);
                         startActivity(intent2);
                         mDrawerLayout.closeDrawers();
                         break;
