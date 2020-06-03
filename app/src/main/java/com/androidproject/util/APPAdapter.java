@@ -43,7 +43,7 @@ public class APPAdapter extends RecyclerView.Adapter<APPAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position){
 
         APP app = mAPPList.get(position);
-        holder.appImage.setImageDrawable(app.getImageId());
+        holder.appImage.setImageDrawable(app.getImage());
         holder.appName.setText(app.getName());
         holder.appName.setSelected(true);
     }

@@ -55,7 +55,7 @@ public class LockedAPPActivity extends AppCompatActivity {
 //                    String packageName = packageInfo.packageName;   //app包名
                     String appName = packageInfo.applicationInfo.loadLabel(getPackageManager()).toString();
                     Drawable icon = packageInfo.applicationInfo.loadIcon(getPackageManager());
-                    APP apple = new APP(appName, icon);
+                    APP apple = new APP(appName, icon,"123","123");
                     appList.add(apple);
                 }
             }

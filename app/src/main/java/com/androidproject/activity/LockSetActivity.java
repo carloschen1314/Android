@@ -17,6 +17,9 @@ import com.androidproject.R;
 import com.androidproject.util.APP;
 import com.androidproject.util.APPAdapter;
 
+import org.litepal.LitePal;
+import org.litepal.tablemanager.Connector;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +33,7 @@ public class LockSetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lock_set);
         Button button=(Button)findViewById(R.id.determin);
 
+        Connector.getDatabase();
         initApps();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.unchose_item);
         GridLayoutManager layoutManager = new GridLayoutManager(this,4);
@@ -57,7 +61,7 @@ public class LockSetActivity extends AppCompatActivity {
 //                    String packageName = packageInfo.packageName;   //app包名
                     String appName = packageInfo.applicationInfo.loadLabel(getPackageManager()).toString();
                     Drawable icon = packageInfo.applicationInfo.loadIcon(getPackageManager());
-                    APP apple = new APP(appName, icon);
+                    APP apple = new APP(appName, icon,"123","123");
                     appList.add(apple);
 //                }
             }
