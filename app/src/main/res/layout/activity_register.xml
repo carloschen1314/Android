@@ -34,12 +34,21 @@
             android:ems="15"
             android:hint="请输入您的账号" />
 
+        <EditText
+            android:id="@+id/edtxt_register_name"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@id/edtxt_register_id"
+            android:layout_centerHorizontal="true"
+            android:ems="15"
+            android:hint="请输入您的昵称" />
+
 
         <EditText
             android:id="@+id/edtxt_register_password1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edtxt_register_id"
+            android:layout_below="@+id/edtxt_register_name"
             android:layout_centerHorizontal="true"
             android:ems="15"
             android:hint="请输入您的密码"
@@ -55,40 +64,40 @@
             android:hint="请确认您的密码"
             android:inputType="textPassword" />
 
-        <LinearLayout
-            android:id="@+id/lin_register_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/edtxt_register_password2"
-            android:layout_centerHorizontal="true">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/lin_register_group"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_below="@+id/edtxt_register_password2"-->
+<!--            android:layout_centerHorizontal="true">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="您选择的群组：" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="您选择的群组：" />-->
 
-            <TextView
-                android:id="@+id/txt_register_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="未选择" />
+<!--            <TextView-->
+<!--                android:id="@+id/txt_register_group"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="未选择" />-->
 
-            <Button
-                android:id="@+id/btn_groupChoosing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="选择群组"
-                android:layout_marginLeft="80dp"/>
+<!--            <Button-->
+<!--                android:id="@+id/btn_groupChoosing"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="选择群组"-->
+<!--                android:layout_marginLeft="80dp"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="注册"
-            android:layout_below="@id/lin_register_group"
+            android:layout_below="@id/edtxt_register_password2"
             android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
