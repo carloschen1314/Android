@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,9 @@ import android.widget.Button;
 import com.androidproject.R;
 import com.androidproject.util.APP;
 import com.androidproject.util.APPAdapter;
+import com.androidproject.util.FormatTools;
+
+import org.litepal.LitePal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,20 +56,20 @@ public class LockedAPPActivity extends AppCompatActivity {
     }
 
     private void initApps() {
-        List<PackageInfo> packages = getPackageManager().getInstalledPackages(0);
-        if (packages.size() > 0) {
-            for (int i = 0; i < packages.size(); i++) {
-                PackageInfo packageInfo = packages.get(i);
-                if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
-//                    String packageName = packageInfo.packageName;   //app包名
-                    String appName = packageInfo.applicationInfo.loadLabel(getPackageManager()).toString();
-                    Drawable icon = packageInfo.applicationInfo.loadIcon(getPackageManager());
-                    APP apple = new APP(appName, icon,"123","123");
-                    appList.add(apple);
-                }
+        appList = LitePal.where("user like ?", id).find(APP.class);
+        PackageManager pm=getPackageManager();
+        for(int i=0;i<appList.size();i++){
+            try {
+                PackageInfo packageInfo=pm.getPackageInfo(appList.get(i).getAddress(),0);
+                Drawable icon = packageInfo.applicationInfo.loadIcon(getPackageManager());
+                FormatTools formatTools=FormatTools.getInstance();
+                byte[] byte_icon= formatTools.Drawable2Bytes(icon);
+                appList.get(i).setImage(byte_icon);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
             }
-        } else {
-            Log.d("LockSetActivity", "没有找到软件包");
+
         }
+
     }
 }

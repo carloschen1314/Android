@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.androidproject.R;
 import com.androidproject.util.APP;
 import com.androidproject.util.APPAdapter;
+import com.androidproject.util.FormatTools;
 
 import org.litepal.LitePal;
 import org.litepal.crud.LitePalSupport;
@@ -65,8 +66,9 @@ public class LockSetActivity extends AppCompatActivity {
                     }
                 }
                 if(right){
-//                    Intent intent = new Intent(LockSetActivity.this, MainActivity.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(LockSetActivity.this, MainActivity.class);
+                    intent.putExtra("id",id);
+                    startActivity(intent);
                     Toast.makeText(LockSetActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(LockSetActivity.this, "入库失败", Toast.LENGTH_SHORT).show();
@@ -83,8 +85,13 @@ public class LockSetActivity extends AppCompatActivity {
 //                if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                 String packageName = packageInfo.packageName;   //app包名
                 String appName = packageInfo.applicationInfo.loadLabel(getPackageManager()).toString();
+
+                //图片转换
                 Drawable icon = packageInfo.applicationInfo.loadIcon(getPackageManager());
-                APP apple = new APP(appName, icon, packageName, id);
+                FormatTools formatTools=FormatTools.getInstance();
+                byte[] byte_icon= formatTools.Drawable2Bytes(icon);
+
+                APP apple = new APP(appName, byte_icon, packageName, id);
                 appList.add(apple);
 //                }
             }

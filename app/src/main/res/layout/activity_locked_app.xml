@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/chooseAPP"
         android:layout_below="@+id/chose_item"
-        android:text="添加应用"
+        android:text="更改应用"
         android:layout_centerHorizontal="true"
         android:padding="10dp"/>
 

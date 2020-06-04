@@ -7,11 +7,11 @@ import org.litepal.crud.LitePalSupport;
 public class APP  extends LitePalSupport {
 
     private String name;
-    private Drawable image;
+    private byte[] image;
     private String address;
     private String user;
 
-    public APP(String name, Drawable image, String address, String user) {
+    public APP(String name, byte[] image, String address, String user) {
         this.name = name;
         this.image = image;
         this.address = address;
@@ -22,31 +22,31 @@ public class APP  extends LitePalSupport {
         return name;
     }
 
-    public Drawable getImage() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public byte[] getImage() {
         return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public String getAddress() {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getUser() {
         return user;
     }
 
-    public void setName(String str) {
-        this.name=str;
-    }
-
-    public void setImage(Drawable draw) {
-        this.image=draw;
-    }
-
-    public void setAddress(String str) {
-        this.address=str;
-    }
-
-    public void setUser(String str) {
-        this.user=str;
+    public void setUser(String user) {
+        this.user = user;
     }
 }
