@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -13,8 +15,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidproject.R;
+import com.androidproject.util.HttpUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,6 +36,27 @@ public class LoginActivity extends AppCompatActivity {
     private RadioButton radioButton;
     private TextView txt_register;
     private boolean rdb_choose;
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0){
+                if (radioButton.isChecked()) {
+                    SharedPreferences.Editor editor = getSharedPreferences("login", MODE_PRIVATE).edit();
+                    editor.putString("id", String.valueOf(editText_accountNumber.getText()));
+                    editor.putString("password", String.valueOf(editText_password.getText()));
+                    editor.putBoolean("remember", radioButton.isChecked());
+                    editor.apply();
+                }
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("id",editText_accountNumber.getText().toString());
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,19 +103,29 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 /*需要传回后台验证的账号密码*/
-                String accountNumber = editText_accountNumber.getText().toString();
-                String password = editText_accountNumber.getText().toString();
-
-                if (radioButton.isChecked()) {
-                    SharedPreferences.Editor editor = getSharedPreferences("login", MODE_PRIVATE).edit();
-                    editor.putString("id", String.valueOf(editText_accountNumber.getText()));
-                    editor.putString("password", String.valueOf(editText_password.getText()));
-                    editor.putBoolean("remember", radioButton.isChecked());
-                    editor.apply();
-                }
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("id",accountNumber);
-                startActivity(intent);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            OkHttpClient client = new OkHttpClient();
+                            Response response;
+                            response= HttpUtils.post("http://39.105.80.171:8080/login/user_login?" +
+                                    "account=" + editText_accountNumber.getText().toString() +
+                                    "&password=" + editText_password.getText().toString(),null);
+                            String jsonData = response.body().string();
+                            JSONObject jsonObject = new JSONObject(jsonData);
+                            int judge = jsonObject.getInt("code");
+                            Message msg = new Message();
+                            if(judge==0)
+                                msg.what = 0;
+                            else
+                                msg.what = 1;
+                            handler.sendMessage(msg);
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
             }
         });
 
