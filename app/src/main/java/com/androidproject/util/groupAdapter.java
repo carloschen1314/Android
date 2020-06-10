@@ -47,7 +47,7 @@ public class groupAdapter extends RecyclerView.Adapter<groupAdapter.ViewHolder> 
         group group = mGroupList.get(position);
         holder.headProtrait.setImageDrawable(group.getheadProtrait());
         holder.name.setText(group.getName());
-        holder.time.setText((int) group.getTime());
+        holder.time.setText(String.valueOf(group.getTime()) +"s");
     }
 
     @Override

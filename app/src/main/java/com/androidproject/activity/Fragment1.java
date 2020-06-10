@@ -25,11 +25,20 @@ import com.androidproject.R;
 import com.androidproject.util.APP;
 import com.androidproject.util.DetectionService;
 import com.androidproject.util.FormatTools;
+import com.androidproject.util.HttpUtils;
+import com.androidproject.util.MD5Utils;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.litepal.LitePal;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
 
 public class Fragment1 extends Fragment {
     private TextView textView;
@@ -39,6 +48,8 @@ public class Fragment1 extends Fragment {
 
     private boolean lockFlag=false;
     private boolean flag=true;
+    private Date date_begin;
+    private Date date_end;
 
     @Nullable
     @Override
@@ -52,6 +63,7 @@ public class Fragment1 extends Fragment {
         super.onActivityCreated(savedInstanceState);
         button=(Button)getActivity().findViewById(R.id.btn);
         MainActivity mainActivity=(MainActivity) getActivity();
+        final String id_send=mainActivity.id;
         appList = LitePal.where("user like ?", mainActivity.id).find(APP.class);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -82,12 +94,29 @@ public class Fragment1 extends Fragment {
                     }).start();
                     button.setText("停止锁定");
                     lockFlag=true;
+//                    date_begin=new Date();
                 }else{
                     flag=false;
                     button.setText("运行锁定程序");
                     lockFlag=false;
+//                    date_end=new Date();
+//                    new Thread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            OkHttpClient client = new OkHttpClient();
+//                            Response response;
+//                            try {
+//                                response= HttpUtils.post("http://39.105.80.171:8080/applock/add_applock?" +
+//                                        "phoneMeid=" + id_send +
+//                                        "&appName=" + "com.example.androidproject"+
+//                                        "&startDate=" + date_begin+
+//                                        "&endDate=" + date_end,null);
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    }).start();
                 }
-
             }
         });
 

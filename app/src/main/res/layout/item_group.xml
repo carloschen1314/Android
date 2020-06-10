@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/head_protrait"
@@ -16,12 +16,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="姓名"
+        android:textSize="24dp"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/head_protrait"/>
 
     <TextView
         android:id="@+id/userTime"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:text="所用时间"
         />

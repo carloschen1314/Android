@@ -1,11 +1,14 @@
 package com.androidproject.activity;
 
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,11 +44,12 @@ public class Fragment3 extends Fragment {
     }
 
     private void initgroups() {
-//        if () {
-//            //设置组信息交互
-//        }
-//        else {
-//            Log.d("Fragment3", "没有找到group");
-//        }
+        Drawable drawable = ContextCompat.getDrawable(getActivity(),R.mipmap.user_photo);
+        group group1 = new group("test1",10, drawable);
+        group group2 = new group("test2",18, drawable);
+        group group3 = new group("test3",30, drawable);
+        groupList.add(group1);
+        groupList.add(group2);
+        groupList.add(group3);
     }
 }
