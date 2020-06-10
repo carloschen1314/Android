@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.androidproject.R;
 import com.androidproject.util.HttpUtils;
+import com.androidproject.util.MD5Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -109,9 +110,11 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             OkHttpClient client = new OkHttpClient();
                             Response response;
+                            MD5Utils md5Utils=new MD5Utils();
+                            String password_en= md5Utils.getMD5Code(editText_password.getText().toString());
                             response= HttpUtils.post("http://39.105.80.171:8080/login/user_login?" +
                                     "account=" + editText_accountNumber.getText().toString() +
-                                    "&password=" + editText_password.getText().toString(),null);
+                                    "&password=" + password_en,null);
                             String jsonData = response.body().string();
                             JSONObject jsonObject = new JSONObject(jsonData);
                             int judge = jsonObject.getInt("code");
