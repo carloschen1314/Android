@@ -13,8 +13,11 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.androidproject.R;
+import com.androidproject.util.DetectionService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+
+import static org.litepal.LitePalApplication.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment[] fragments;
     private int lastfragment;//用于记录上个选择的Fragment
 
-    private String id;
+    public String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
