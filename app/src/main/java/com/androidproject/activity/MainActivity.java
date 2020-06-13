@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent2);
                         mDrawerLayout.closeDrawers();
                         break;
-                    case R.id.nav_myGroup:
-                        Intent intent3 = new Intent(MainActivity.this, GroupChangingActivity.class);
-                        startActivity(intent3);
-                        mDrawerLayout.closeDrawers();
-                        break;
+//                    case R.id.nav_myGroup:
+//                        Intent intent3 = new Intent(MainActivity.this, GroupChangingActivity.class);
+//                        startActivity(intent3);
+//                        mDrawerLayout.closeDrawers();
+//                        break;
                 }
 
                 return false;
@@ -99,13 +99,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                     return true;
                 }
-                case R.id.navigation_talk: {
-                    if (lastfragment != 1) {
-                        switchFragment(lastfragment, 1);
-                        lastfragment = 1;
-                    }
-                    return true;
-                }
+//                case R.id.navigation_talk: {
+//                    if (lastfragment != 1) {
+//                        switchFragment(lastfragment, 1);
+//                        lastfragment = 1;
+//                    }
+//                    return true;
+//                }
                 case R.id.navigation_list: {
                     if (lastfragment != 2) {
                         switchFragment(lastfragment, 2);

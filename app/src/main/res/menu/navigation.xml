@@ -6,10 +6,10 @@
         android:icon="@drawable/ic_nav_lock"
         android:title="@string/nav_lock" />
 
-    <item
-        android:id="@+id/navigation_talk"
-        android:icon="@drawable/ic_nav_talk"
-        android:title="@string/nav_talk" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_talk"-->
+<!--        android:icon="@drawable/ic_nav_talk"-->
+<!--        android:title="@string/nav_talk" />-->
 
     <item
         android:id="@+id/navigation_list"

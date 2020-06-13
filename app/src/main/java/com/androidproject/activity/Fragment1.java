@@ -79,11 +79,15 @@ public class Fragment1 extends Fragment {
                                 if(flag){
                                     if(!isForegroundPkgViaDetectionService(appPacket)){
                                         appPacket=DetectionService.foregroundPackageName;
+                                        appList = LitePal.where("user like ?", id_send).find(APP.class);
                                         for(int i=0;i<appList.size();i++){
                                             APP app=appList.get(i);
                                             if(isForegroundPkgViaDetectionService(app.getAddress())){
                                                 Log.d("Fragment","运行锁定程序");
                                                 //进行界面遮挡设置
+                                                Intent intent=new Intent(getActivity(),LockUIActivity.class);
+                                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                startActivity(intent);
                                             }
                                         }
                                     }
